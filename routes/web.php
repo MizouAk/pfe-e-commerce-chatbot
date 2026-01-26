@@ -12,5 +12,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/login',[PageController::class,'loginSend'])->name('login.send');
 });
 
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth')->name('home');
+
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 

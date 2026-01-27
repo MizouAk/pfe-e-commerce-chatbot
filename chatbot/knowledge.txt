@@ -1,0 +1,23 @@
+We are a computer selling store in Morocco.
+
+Products:
+- Laptops
+- Desktop computers
+- Computer accessories
+
+Shipping:
+- We ship only داخل المغرب
+- We deliver to major cities such as Casablanca, Rabat, Agadir, Marrakech
+- We do not offer international shipping
+
+Warranty:
+- All products come with a 1-year warranty
+
+Payment:
+- Cash
+- Credit card
+- Online payment
+
+Support hours:
+- Monday to Saturday
+- 9:00 AM to 6:00 PM

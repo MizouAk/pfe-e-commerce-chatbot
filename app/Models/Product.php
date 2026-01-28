@@ -14,6 +14,8 @@ class Product extends Model
         'stock',
         'image'
     ];
+    protected $appends = ['image_url'];
+
 
     public function category()
     {
@@ -24,4 +26,10 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function getImageUrlAttribute(): ?string
+    {  
+      return $this->image ? asset('storage/' . $this->image) : null;
+    }
+
 }

@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\OrderController;
 
-
+//public routes
 
 // register api route
 Route::post('/register', [ApiAuthController::class, 'register']);
 
 //login api route
 Route::post('/login', [ApiAuthController::class, 'login']);
-
-// logout api route
-Route::middleware('auth:sanctum')->post('/logout', [ApiAuthController::class, 'logout']);
 
 //categorie api route search
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -27,6 +26,29 @@ Route::get('/products', [ProductController::class, 'index']);
 
 //product api route show
 Route::get('/products/{id}', [ProductController::class, 'show']);
+
+
+
+
+//route for user
+Route::middleware('auth:sanctum')->group(function () {
+
+    // Logout
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
+
+    // Cart
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/add', [CartController::class, 'add']);
+    Route::put('/cart/update', [CartController::class, 'updateQuantity']);
+    Route::delete('/cart/remove/{productId}', [CartController::class, 'remove']);
+    Route::delete('/cart/clear', [CartController::class, 'clear']);
+
+    // Checkout + Orders 
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{id}', [OrderController::class, 'show']);
+    Route::post('/orders/{id}/cancel', [OrderController::class, 'cancel']);
+});
 
 
 

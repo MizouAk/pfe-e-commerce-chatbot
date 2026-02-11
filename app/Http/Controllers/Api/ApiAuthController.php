@@ -23,6 +23,7 @@ class ApiAuthController extends Controller
         'password' => Hash::make($data['password']),
         'role' => 'client',
     ]);
+         
 
     $token = $user->createToken('api-token')->plainTextToken;
 
@@ -50,6 +51,8 @@ class ApiAuthController extends Controller
         if (!$user || !Hash::check($data['password'], $user->password)) {
             return response()->json(['message' => 'Email or password incorrect'], 401);
         }
+
+        $user->tokens()->delete(); 
 
         $token = $user->createToken('api-token')->plainTextToken;
 

@@ -1,0 +1,89 @@
+/* ===== Collections Section ===== */
+.collections {
+  padding: 45px 8%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* Title */
+.collections-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #0a0a0a;
+}
+
+/* Grid */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+}
+
+/* Card */
+.collection-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 120, 255, 0.15);
+}
+
+/* Image wrapper */
+.collection-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a, #1e40af);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image */
+.collection-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Name */
+.collection-name {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .collections {
+    padding: 35px 6%;
+  }
+
+  .collections-title {
+    font-size: 1.4rem;
+  }
+
+  .collections-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collections-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

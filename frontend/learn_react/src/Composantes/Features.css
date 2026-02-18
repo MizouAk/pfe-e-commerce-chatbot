@@ -1,0 +1,63 @@
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 18px;              /* كان 25 */
+  padding: 45px 80px;     /* كان 60px 100px */
+  flex-wrap: wrap;
+  background: white;
+}
+
+/* Card */
+.feature-card {
+  width: 150px;           /* كان 180 */
+  height: 170px;          /* كان 200 */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;    /* كان 14 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;              /* كان 15 */
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px); /* كان -8 */
+  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* Image */
+.feature-img {
+  width: 70px;            /* كان 90 */
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Text badge */
+.feature-card span {
+  padding: 5px 12px;      /* كان 6px 14px */
+  border-radius: 18px;
+  font-size: 13px;        /* كان 14 */
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features {
+    padding: 35px 40px;
+    gap: 16px;
+  }
+
+  .feature-card {
+    width: 140px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    width: 130px;
+    height: 150px;
+  }
+}

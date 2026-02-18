@@ -1,0 +1,140 @@
+/* تصميم الـ Notch المستطيلة */
+.notch {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3b82f6;  /* اللون الأزرق المتناسق مع الموقع */
+  padding: 12px 20px;
+  border-radius: 25px;  /* حواف مدورة بشكل أفضل */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* ظلال أعمق لتظهر بشكل أكثر تميزاً */
+  z-index: 100;
+  transition: background-color 0.3s ease;
+  max-width: 100px;
+  height: 45px;
+}
+
+/* تأثير hover */
+.notch:hover {
+  background-color: #3181e1;  /* تغير اللون عند مرور الماوس */
+}
+
+/* تصميم أيقونة داخل notch */
+.notch-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notch svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+/* تكبير الأيقونة عند hover */
+.notch:hover svg {
+  transform: scale(1.1);
+}
+
+/* تصميم chat-box */
+.chat-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #ffffff;  /* اللون الأبيض الفاتح */
+  border-radius: 8px;
+  padding: 20px;
+  width: 320px;
+  height: 400px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chat-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.status {
+  font-size: 12px;
+  color: #3b82f6;
+}
+
+.close-chat {
+  cursor: pointer;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+/* تحكم في الرسائل داخل الـ chatbox */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.message.bot {
+  background-color: #f1f1f1;  /* لون خلفية رسائل البوت */
+  align-self: flex-start;
+}
+
+.message.user {
+  background-color: #3b82f6;  /* لون خلفية رسائل المستخدم */
+  color: white;
+  align-self: flex-end;
+}
+
+/* تصميم المدخلات */
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+ 
+}
+
+.chat-input input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat-input button:hover {
+  background-color: #3b82f6;
+}
+
+.chat-input-button{
+    margin-left:5px;
+}

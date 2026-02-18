@@ -1,0 +1,20 @@
+.shop-hero {
+  height: 100px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.shop-hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.shop-hero p {
+  font-size: 18px;
+  color: #cbd5f5;
+}

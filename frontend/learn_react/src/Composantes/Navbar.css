@@ -1,0 +1,198 @@
+/* Reset بسيط */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Logo */
+nav h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+
+.nav-subtitle {
+  color: #3b82f6;
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+}
+
+/* Search */
+.catalog-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.catalog-input {
+  border: none;
+  outline: none;
+  padding: 10px 14px;
+  width: 180px;
+  background: transparent;
+}
+
+.catalog-btn {
+  border: none;
+  background-color: transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.catalog-btn:hover {
+  background-color: #ececec;
+}
+
+/* User actions 
+.user-actions {
+    display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.action-item button {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.action-item:hover {
+  color: #000;
+}
+
+.action-icon {
+  font-size: 18px;
+}
+*/
+
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.user-actions button {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  color: #111827;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.action-item1 button {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.action-item1 button:hover {
+  background-color: #2563eb;
+  color: white;
+}
+.action-item2 button {
+  background-color: #ffffff;
+  border-color: #111827;
+  color: rgb(0, 0, 0);
+}
+
+.action-item2 button:hover {
+  background-color: black;
+  border-color: rgb(255, 255, 255);
+  color: aliceblue;
+}
+
+
+
+
+
+/* Links */
+ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+ul li {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  position: relative;
+}
+
+/* Hover underline effect */
+ul li::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+}
+ul li a {
+  text-decoration: none;   
+  color: #444;             
+}
+ul li a:hover {
+  color: #3b82f6;             
+}
+ul li:hover::after {
+  width: 100%;
+}
+
+.ulNavbar li:hover {
+  color: #000;
+}
+
+
+.menuIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid #3b82f6;
+  background-color: transparent;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* hover effect */
+.menuIcon:hover {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0px 0px 12px #3b82f6;
+}
+
+/* click effect */
+.menuIcon:active {
+  transform: scale(0.95);
+}

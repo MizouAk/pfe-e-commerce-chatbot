@@ -1,0 +1,32 @@
+.categories-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* المسافة بين كل button */
+  margin: 25px 0;
+  justify-content: center; /* باش يجيوا فالمركز */
+}
+
+.categories-buttons button {
+  background-color: #0b0f1a; /* لون غامق للخلفية */
+  color: #4f8cff;            /* لون الخط الأزرق ديال شعار SnowGames */
+  border: 2px solid #4f8cff; /* حد أزرق رقيق */
+  padding: 10px 20px;        /* المساحة داخل الزر */
+  border-radius: 8px;        /* الحواف مدورة */
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; /* transition smooth */
+}
+
+.categories-buttons button:hover {
+  background-color: #4f8cff; /* الخلفية تولي أزرق */
+  color: #ffffff;            /* الخط يولي أبيض */
+  transform: translateY(-2px); /* effect صغير ديال التحريك */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.categories-buttons button.active {
+  background-color: #4f8cff; /* button اللي مختار */
+  color: #ffffff;
+  border-color: #3561c7;
+}

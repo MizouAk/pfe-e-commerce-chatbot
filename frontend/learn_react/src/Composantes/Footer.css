@@ -1,0 +1,91 @@
+/* ===== Footer global ===== */
+.footer {
+  background: linear-gradient(180deg, #0b0f1a, #080c16);
+  color: #cfd3ff;
+  padding: 50px 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Container ===== */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ===== Column ===== */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* ===== Logo ===== */
+.footer-logo {
+  color: #4f8cff;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+/* ===== Description ===== */
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aab0ff;
+  max-width: 280px;
+}
+
+/* ===== Titles ===== */
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 15px;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #4f8cff;
+  display: inline-block;
+}
+
+/* ===== Lists ===== */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* 🔥 المسافة بين اللينكات */
+}
+
+.footer-col ul li {
+  font-size: 14px;
+  color: #cfd3ff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Links ===== */
+.footer-col ul li a {
+  color: #cfd3ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover,
+.footer-col ul li:hover {
+  color: #4f8cff;
+  cursor: pointer;
+}
+
+/* ===== Bottom ===== */
+.footer-bottom {
+  margin-top: 35px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #9aa0ff;
+  border-top: 1px solid #1f2640;
+}

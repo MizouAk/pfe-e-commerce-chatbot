@@ -7,8 +7,8 @@ export const navLinks = [
 ];
 
 export const navCategory=[
-  {title:'Pc Gamer', path:''},
-  {title:'Carte Graphique', path:''},
+  {title:'Pc Gamer', path:'/shop'},
+  {title:'Carte Graphique', path:'/contact'},
   {title:'Processeur', path:''},
   {title:'RAM', path:''},
   {title:'SSD', path:''},

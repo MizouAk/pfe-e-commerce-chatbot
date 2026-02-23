@@ -1,22 +1,29 @@
 
 
-import './Collections.css'
-import PcGamer from "../Img/pc_gamer.webp";
-import Ecran from "../Img/ecrans.png";
-import Clavier_souris from "../Img/clavier_souris.webp";
-import Laptop from "../Img/laptop.png";
+import './Collections.css';
+import PcGamer from "../Img/pc_budget_rx6600.jpg";
+import Carte_Graphique from "../Img/rtx4070.jpg";
+import Processeur from "../Img/i712700f.jpg";
+import Ram from "../Img/ram16_ddr5_5200.jpg";
+import Ssd from "../Img/ssd_sata_1tb.jpg";
+import Hdd from "../Img/hdd_1tb.jpg";
+import Carte_Mère from "../Img/mb_b760.jpg";
+import Alimentation from "../Img/psu_750w_gold.jpg";
+import Boîtier from "../Img/case_atx_airflow.jpg";
+import Refroidissement from "../Img/aio_240.jpg";
+import Ecran from "../Img/monitor_24_144.jpg";
 const collections = [
   { id:1, name: "PC Gamer", img: PcGamer },
-  { id:2, name: "Carte Graphique", img: Ecran },
-  { id:3, name: "Processeur", img: Clavier_souris },
-  { id:4, name: "RAM", img: Laptop },
-  { id:5, name: "SSD", img: Laptop },
-  { id:6, name: "HDD", img: Laptop },
-  { id:7, name: "Carte Mère", img: Laptop },
-  { id:8, name: "Alimentation", img: Laptop },
-  { id:9, name: "Boîtier", img: Laptop },
-  { id:10, name: "Refroidissement", img: Laptop },
-  { id:11, name: "Écran", img: Laptop },
+  { id:2, name: "Carte Graphique", img: Carte_Graphique },
+  { id:3, name: "Processeur", img: Processeur },
+  { id:4, name: "RAM", img: Ram },
+  { id:5, name: "SSD", img: Ssd },
+  { id:6, name: "HDD", img: Hdd },
+  { id:7, name: "Carte Mère", img: Carte_Mère },
+  { id:8, name: "Alimentation", img: Alimentation },
+  { id:9, name: "Boîtier", img: Boîtier },
+  { id:10, name: "Refroidissement", img: Refroidissement },
+  { id:11, name: "Écran", img: Ecran },
 ];
 
 function Collections() {

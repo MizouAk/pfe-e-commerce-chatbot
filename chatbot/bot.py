@@ -1,11 +1,11 @@
 import os
 import re
+from dotenv import load_dotenv
 import google.generativeai as genai
 
+load_dotenv()
 
-
-
-genai.configure(api_key=os.getenv("AIzaSyCpjvFp9IGJuXjqGiKwc7xA4gvrT9X4gkgY"))
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
 with open("knowledge.txt", "r", encoding="utf-8") as f:
@@ -41,12 +41,10 @@ Store Information:
 """
 
 model = genai.GenerativeModel(
-    model_name="gemini-1.5-flash",
+    model_name="models/gemini-3-flash-preview",
     system_instruction=SYSTEM_PROMPT
 )
-
 print("🛍️  Support bot is running. Type 'quit' to exit.\n")
-
 
 
 def extract_budget(text):
@@ -67,7 +65,7 @@ while True:
 
         if budget:
             enhanced_input = f"""
-User budget: {budget} EUR
+User budget: {budget} MAD
 
 User request:
 {user_input}

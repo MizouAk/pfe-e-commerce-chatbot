@@ -1,19 +1,42 @@
+//CartPage.jsx
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/CartContex";
+import { useCart } from "../Context/CartContext";
 import { useState } from "react";
+import { apiFetch } from "../api/apiFetch";
+import { useAuthUi } from "../Context/AuthUiContext";
+import { getProductImage } from "../api/imageUrl";
+import { useToast } from "../Context/ToastContext";
+
 import "./CartPage.css";
 
 function CartPage() {
     const { cart, removeFromCart, updateQty, clearCart } = useCart();
+    const { openAuth } = useAuthUi();
+    const { show } = useToast();
+    const safeCart = Array.isArray(cart) ? cart : [];
 
-    const total = cart.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const getQty = (item) => Number(item.qty ?? item.quantity ?? 1);
+    const getProduct = (item) => item.product ?? item.Product ?? null;
 
+    const total = safeCart.reduce((sum, item) => {
+        const p = getProduct(item);
+        const price = Number(p?.price ?? 0);
+        return sum + price * getQty(item);
+    }, 0);
     const [showCheckout, setShowCheckout] = useState(false);
-    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
     const [error, setError] = useState("");
 
     const openCheckout = () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            setError("")
+            openAuth();   // ✅ يفتح AuthModal مباشرة
+            return;
+        }
+
         setError("");
         setShowCheckout(true);
     };
@@ -22,26 +45,35 @@ function CartPage() {
         setShowCheckout(false);
     };
 
-    const handleConfirm = (e) => {
+    const handleConfirm = async (e) => {
         e.preventDefault();
 
-        if (!email.trim() || !phone.trim()) {
-            setError("Email و Numero ضروريين.");
+        if (!address.trim() || !phone.trim()) {
+            setError("Adresse et Numero sont imporantes");
             return;
         }
 
-        // ✅ دابا غير مثال (حتى تربطها بالباك)
-        console.log("ORDER:", { email, phone, cart, total });
-        alert("✅ تم تأكيد الطلب!");
+        setError("");
 
-        // تقدر تفرغ panier هنا إلا بغيتي (خاصك clearCart فـ context)
-        setShowCheckout(false);
-        setEmail("");
-        setPhone("");
-        clearCart();
+        try {
+            await apiFetch("/checkout", {
+                method: "POST",
+                body: JSON.stringify({ address, phone }),
+            });
+
+            show("✅ تم تأكيد الطلب!", { type: "success" });
+            setShowCheckout(false);
+            setAddress("");
+            setPhone("");
+
+            // ✅ إلا checkout نجح: نفرغ cart
+            await clearCart();
+        } catch (err) {
+            setError(err.message || "وقع مشكل فـ تأكيد الطلب");
+        }
     };
 
-    if (!cart || cart.length === 0) {
+    if (safeCart.length === 0) {
         return (
             <div className="cart-page">
                 <h1 className="cart-title">Mon Panier</h1>
@@ -67,16 +99,19 @@ function CartPage() {
                     <div>SUBTOTAL</div>
                 </div>
 
-                {cart.map((item) => {
-                    const price = Number(item.product.price || 0);
-                    const subtotal = price * item.qty;
+                {safeCart.map((item) => {
+                    const product = getProduct(item);
+                    const qty = getQty(item);
+                    const price = Number(product?.price ?? 0);
+                    const subtotal = price * qty;
+                    const productId = item.product_id ?? item.productId ?? product?.id ?? item.id;
 
                     return (
-                        <div className="cart-row cart-tr" key={item.id}>
+                        <div className="cart-row cart-tr" key={productId}>
                             <div>
                                 <button
                                     className="cart-remove"
-                                    onClick={() => removeFromCart(item.id)}
+                                    onClick={() => removeFromCart(productId)}
                                     title="Remove"
                                 >
                                     🗑
@@ -84,10 +119,10 @@ function CartPage() {
                             </div>
 
                             <div>
-                                <img className="cart-img" src={item.product.image_url} alt={item.product.name} />
+                                <img className="cart-img" src={getProductImage(product)} alt={product?.name} />
                             </div>
 
-                            <div className="cart-name">{item.product.name}</div>
+                            <div className="cart-name">{product?.name}</div>
 
                             <div className="cart-price">{price} DH</div>
 
@@ -96,9 +131,9 @@ function CartPage() {
                                     className="cart-qty"
                                     type="number"
                                     min="1"
-                                    max={item.product.stock}
-                                    value={item.qty}
-                                    onChange={(e) => updateQty(item.id, Number(e.target.value))}
+                                    max={product?.stock ?? 999}
+                                    value={qty}
+                                    onChange={(e) => updateQty(productId, Number(e.target.value))}
                                 />
                             </div>
 
@@ -127,13 +162,13 @@ function CartPage() {
 
                         <form onSubmit={handleConfirm} className="checkout-form">
                             <label className="checkout-label">
-                                Email *
+                                Adresse *
                                 <input
                                     className="checkout-input"
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="ex: ayoub@email.com"
+                                    type="text"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    placeholder="ex: Hay ... Rue ... Ville ..."
                                     required
                                 />
                             </label>
@@ -143,8 +178,13 @@ function CartPage() {
                                 <input
                                     className="checkout-input"
                                     type="tel"
+                                    inputMode="numeric"
+                                    maxLength={10}   // ❗ مايفوتش 10
                                     value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
+                                    onChange={(e) => {
+                                        const onlyNumbers = e.target.value.replace(/\D/g, "").slice(0, 10);
+                                        setPhone(onlyNumbers);
+                                    }}
                                     placeholder="ex: 06xxxxxxxx"
                                     required
                                 />

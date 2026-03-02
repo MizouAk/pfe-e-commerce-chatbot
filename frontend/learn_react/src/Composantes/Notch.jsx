@@ -1,3 +1,4 @@
+// Notch.jsx
 import React, { useState } from 'react';
 import './Notch.css';  // استيراد ملف الـ CSS الخاص بـ notch
 

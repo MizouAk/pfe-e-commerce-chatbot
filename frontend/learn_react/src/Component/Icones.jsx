@@ -1,3 +1,4 @@
+// Icones.jsx
 const SearchIcon = () => (
   <svg
     width="20"

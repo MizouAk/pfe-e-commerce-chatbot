@@ -1,0 +1,131 @@
+/* ===== Titles / states ===== */
+.admin-h1{
+  color: #fff;
+  margin-bottom: 18px;
+  font-weight: 900;
+}
+
+.admin-loading,
+.admin-error{
+  padding: 14px;
+  font-weight: 800;
+}
+
+.admin-error{
+  color: #ff6b6b;
+}
+
+/* ===== Wrapper ===== */
+.admin-orders{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== Card ===== */
+.admin-order-card{
+  background: rgba(10,18,45,0.6);
+  border: 1px solid rgba(78,161,255,0.25);
+  border-radius: 14px;
+  padding: 16px;
+  color: #fff;
+}
+
+/* top section */
+.admin-order-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.admin-order-id{
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.admin-order-sub{
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* rows */
+.admin-order-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* select */
+.admin-select{
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(6,11,31,0.8);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-select:focus{
+  outline: none;
+  border-color: #4f8cff;
+}
+
+/* ===== Status badge ===== */
+.badge{
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+/* colors */
+.badge.pending{
+  background: rgba(255,193,7,0.15);
+  color: #ffc107;
+}
+
+.badge.confirmed{
+  background: rgba(76,175,80,0.15);
+  color: #4caf50;
+}
+
+.badge.shipped{
+  background: rgba(33,150,243,0.15);
+  color: #2196f3;
+}
+
+.badge.delivered{
+  background: rgba(0,200,150,0.15);
+  color: #00c896;
+}
+
+.badge.cancelled{
+  background: rgba(255,107,107,0.15);
+  color: #ff6b6b;
+}
+
+.badge.default{
+  background: rgba(255,255,255,0.1);
+  color: #ccc;
+}
+
+/* responsive */
+@media (max-width: 768px){
+  .admin-order-row{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .admin-order-top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

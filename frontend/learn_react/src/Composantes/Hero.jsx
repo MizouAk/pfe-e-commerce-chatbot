@@ -1,4 +1,4 @@
-
+// Hero.jsx
 import './Hero.css';
 import { useNavigate } from "react-router-dom";
 import Button from '../Component/Buttons';

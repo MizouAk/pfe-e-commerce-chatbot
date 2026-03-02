@@ -1,71 +1,33 @@
 
-/*
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Footer from "../Composantes/Footer";
-
-import "./ProductDetails.css";
 
 
-function ProductDetails() {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
 
-  useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/products/${id}`)
-      .then(res => res.json())
-      .then(json => setProduct(json.data))
-      .catch(err => console.log(err));
-  }, [id]);
-
-  if (!product) return <p>Loading...</p>;
-
-  return (
-    <>
-    <Link to="/Shop" className="back-btn">⬅ رجع للمنتوجات</Link>
-    <div className="product-details">
-      <img src={product.image_url} alt={product.name} />
-
-      <div>
-        <h1>{product.name}</h1>
-        <p>{product.description}</p>
-        <h2>{product.price} DH</h2>
-
-        {product.stock > 0 ? (
-          <button>Add to cart</button>
-        ) : (
-          <span>Out of stock</span>
-        )}
-      </div>
-    </div>
-    </>
-  );
-}
-
-export default ProductDetails;
-*/
-
+//ProductDetails.jsx
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { products as dataProducts } from "../Datatest/products";
+import { apiFetch } from "../api/apiFetch";
 import Navbar from "../Composantes/Navbar";
-
 import Footer from "../Composantes/Footer";
-import { useCart } from "../Context/CartContex";
+import { useCart } from "../Context/CartContext";
+import { useAuthUi } from "../Context/AuthUiContext";
+import { getProductImage } from "../api/imageUrl";
+
 import "./ProductDetails.css";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
+  const { openAuth } = useAuthUi();
   const { addToCart } = useCart();
   useEffect(() => {
-    const found = dataProducts.find((p) => String(p.id) === String(id));
-    setProduct(found);
-    setQty(1);
+    apiFetch(`/products/${id}`)
+      .then(res => {
+        setProduct(res.data);
+        setQty(1);
+      })
+      .catch(() => setProduct(null));
   }, [id]);
-
   if (!product) return <p>Product not found</p>;
   const incQty = () => setQty((q) => Math.min(q + 1, product.stock || 99));
   const decQty = () => setQty((q) => Math.max(1, q - 1));
@@ -75,7 +37,7 @@ function ProductDetails() {
       <Link to="/shop" className="back-btn">Continuer les achats</Link>
 
       <div className="pd-box">
-        <img className="pd-img" src={product.image_url} alt={product.name} />
+        <img  className="pd-img" src={getProductImage(product)} alt={product?.name} />
 
         <div className="pd-info">
           <h1 className="pd-title">{product.name}</h1>
@@ -98,7 +60,11 @@ function ProductDetails() {
               </button>
             </div>
 
-            <button className="pd-add" disabled={product.stock <= 0} onClick={() => addToCart(product, qty)}>
+            <button className="pd-add" disabled={product.stock <= 0} onClick={() => {
+              const token = localStorage.getItem("token");
+              if (!token) return openAuth();
+              addToCart(product.id, qty);
+            }}>
               Add to cart
             </button>
           </div>

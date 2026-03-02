@@ -1,0 +1,107 @@
+/* OrdersPage.css */
+.orders-page {
+  padding: 40px;
+  min-height: 80vh;
+  background: #060b1f;
+  color: #ffffff;
+}
+
+.orders-title {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+}
+
+.orders-error {
+  color: #ff4d4d;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+.orders-empty {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-card {
+  background: #0c1635;
+  border: 1px solid rgba(78, 161, 255, 0.25);
+  border-radius: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: white;
+}
+
+.order-card:hover {
+  border: 1px solid rgba(78, 161, 255, 0.55);
+  box-shadow: 0 0 18px rgba(78, 161, 255, 0.25);
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.order-row:last-child {
+  border-bottom: 0px;
+}
+
+.order-label {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.order-value {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.order-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* status styles (بسيطين) */
+.order-status.pending {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.order-status.confirmed {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+}
+
+.order-status.cancelled {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+}
+
+.order-status.default {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+/* optional إذا backend رجع شي statuses آخرين */
+.order-status.shipped {
+  background: rgba(78, 161, 255, 0.15);
+  color: #4ea1ff;
+}
+
+.order-status.delivered {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+}

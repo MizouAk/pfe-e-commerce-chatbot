@@ -1,3 +1,4 @@
+// Home.jsx
 import Hero from "../Composantes/Hero";
 import Features from "../Composantes/Features";
 import Collections from "../Composantes/Collections";

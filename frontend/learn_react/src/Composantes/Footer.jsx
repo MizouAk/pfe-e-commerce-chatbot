@@ -1,7 +1,11 @@
+/// Footer.jsx
 import "./Footer.css";
 import { navLinks } from "../Component/Links";
 import { navCategory } from "../Component/Links";
+import { useCategories } from "../Context/CategoriesContext";
+import { Link } from "react-router-dom";
 function Footer() {
+    const { categories } = useCategories();
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -28,17 +32,14 @@ function Footer() {
                 </div>
 
                 {/* Catégories */}
-                <div className="footer-col">
+                <div className="footer-col footer-cat-col">
                     <h3>Catégories</h3>
                     <ul className="footer-categories">
-                        {navCategory.map((link) => (
-                            <li key={ link.title}>
-                                <a href={link.path}>{link.title}</a>
-                                </li>
-                        )
-                        )}
-
-
+                        {categories.map((c) => (
+                            <li key={c.id}>
+                                <Link to={`/shop?category_id=${c.id}`}>{c.name}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 

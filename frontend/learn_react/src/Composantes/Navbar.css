@@ -232,3 +232,58 @@ ul li:hover::after {
 .menuIcon:active {
   transform: scale(0.95);
 }
+.user-menu{
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-btn{
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.user-dropdown{
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  min-width: 190px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  padding: 8px;
+  z-index: 9999;
+}
+
+.user-dropdown button{
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 10px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.user-dropdown hr{
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin: 8px 0;
+}
+/* default hover for normal items (Mon profil / Admin panel / Mes commandes) */
+.user-dropdown button:hover{
+  background: rgba(78,161,255,0.12);
+  color: #2563eb; /* blue */
+}
+
+/* Logout button (last button) hover = red */
+.user-dropdown button:last-of-type:hover{
+  background: rgba(239,68,68,0.12); /* light red */
+  color: #ef4444; /* red */
+}

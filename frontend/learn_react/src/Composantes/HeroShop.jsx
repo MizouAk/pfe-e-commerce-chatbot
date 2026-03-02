@@ -1,3 +1,4 @@
+// HeroShop.jsx
 import "./HeroShop.css";
 
 function HeroShop() {

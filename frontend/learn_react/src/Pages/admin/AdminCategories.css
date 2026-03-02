@@ -1,0 +1,84 @@
+.acats{ width: 100%; }
+
+.acats-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.acats-title{ margin: 0; font-size: 22px; font-weight: 900; }
+
+.acats-add{
+  text-decoration: none;
+  background: #4f8cff;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.acats-error{ color: #c61d1d; font-weight: 800; }
+
+.acats-table{
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+
+  /* ✅ هادي هي اللي كتصلّح المشكل */
+  color: #0b1220;
+}
+
+.acats-row{
+  display: grid;
+  grid-template-columns: 90px 1fr 220px;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  /* ✅ احتياط: حتى إلا كان شي parent داير color:white */
+  color: #0b1220;
+}
+
+.acats-th{
+  background: #f3f5fb;
+  font-size: 13px;
+  font-weight: 900;
+
+  /* ✅ باش header يبان مزيان */
+  color: #111827;
+}
+
+.acats-tr{ font-size: 14px; }
+.acats-name{ font-weight: 900; }
+
+.acats-actions{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.acats-edit{
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(79,140,255,0.35);
+  background: rgba(79,140,255,0.10);
+  font-weight: 800;
+  font-size: 13px;
+  color: #2b63d6;
+}
+
+.acats-del{
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(198,29,29,0.25);
+  background: rgba(198,29,29,0.08);
+  font-weight: 800;
+  font-size: 13px;
+  color: #c61d1d;
+  cursor: pointer;
+}

@@ -1,4 +1,6 @@
+// AuthModal.jsx
 import { useState } from "react";
+import { apiFetch } from "../api/apiFetch";
 import "./AuthModal.css";
 
 function AuthModal({ close }) {
@@ -12,30 +14,20 @@ function AuthModal({ close }) {
   const login = async () => {
     setError("");
     setLoading(true);
+
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/login", {
+      const data = await apiFetch("/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json();
-
-      // 2) إلا فشل login
-      if (!res.ok) {
-        alert(data.message || "Login failed");
-        return;
-      }
-
-      // 3) إلا نجح login: نخزن token و نسد modal
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("auth-changed"));
       close();
     } catch (e) {
-      setError("Une erreur est survenue lors de la connexion au serveur. Veuillez réessayer plus tard.");
+      // e.message جاية من apiFetch (message ديال Laravel ولا HTTP status)
+      setError(e.message || "Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setLoading(false);
     }
@@ -46,6 +38,7 @@ function AuthModal({ close }) {
 
   const register = async () => {
     setError("");
+
     if (!name || !email || !password || !confirmPassword) {
       setError("Veuillez remplir tous les champs obligatoires.");
       return;
@@ -55,34 +48,26 @@ function AuthModal({ close }) {
       setError("Le mot de passe et sa confirmation ne correspondent pas.");
       return;
     }
+
     setLoading(true);
+
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/register", {
+      const data = await apiFetch("/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
         body: JSON.stringify({
           name,
           email,
           password,
-          password_confirmation: confirmPassword, // ✅ مهم ل Laravel
+          password_confirmation: confirmPassword,
         }),
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Register failed");
-        return;
-      }
-
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("auth-changed"));
       close();
     } catch (e) {
-      setError("Une erreur est survenue lors de la connexion au serveur. Veuillez réessayer plus tard.");
+      setError(e.message || "Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setLoading(false);
     }

@@ -1,3 +1,4 @@
+// contact.jsx
 import "./contact.css";
 import Navbar from "../Composantes/Navbar";
 import Footer from "../Composantes/Footer";

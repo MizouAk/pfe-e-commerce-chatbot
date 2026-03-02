@@ -16,18 +16,27 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 */
-
+// index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { CartProvider } from "./Context/CartContex";
+import { CartProvider } from "./Context/CartContext";
+import { AuthUiProvider } from "./Context/AuthUiContext";
+import { CategoriesProvider } from "./Context/CategoriesContext";
+import { ToastProvider } from "./Context/ToastContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <AuthUiProvider>
+      <CategoriesProvider>
+        <CartProvider>
+          <ToastProvider>
+            <App />
+          </ToastProvider>
+        </CartProvider>
+      </CategoriesProvider>
+    </AuthUiProvider>
   </BrowserRouter>
 );
